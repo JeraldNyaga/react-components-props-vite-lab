@@ -19,14 +19,14 @@ function App() {
 			<main>
 				<About />
 				<NewBlogButton showForm={showForm} setForm={setShowForm} />
-				<ArticleList dataPosts={dataPosts} />
-
 				{showForm && (
 					<AddBlog
 						setShowForm={setShowForm}
+						showForm={showForm}
 						handleDataPosts={setDataPosts}
 					/>
 				)}
+				<ArticleList dataPosts={dataPosts} />
 			</main>
 			<Footer />
 		</>
