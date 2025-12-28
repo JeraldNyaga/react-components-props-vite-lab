@@ -3,20 +3,34 @@ import Header from "./Header";
 import Footer from "./Footer";
 import About from "./About";
 import ArticleList from "./ArticleList";
+import NewBlogButton from "./NewBlogButton";
+import AddBlog from "./AddBlog";
+import { useState } from "react";
 
-console.log(blogData.posts)
+console.log();
 
 function App() {
-  return (
+	const [dataPosts, setDataPosts] = useState(() => blogData.posts);
+	const [showForm, setShowForm] = useState(false);
+
+	return (
 		<>
-    <Header />
+			<Header />
 			<main>
 				<About />
-        <ArticleList/>
+				<NewBlogButton showForm={showForm} setForm={setShowForm} />
+				<ArticleList dataPosts={dataPosts} />
+
+				{showForm && (
+					<AddBlog
+						setShowForm={setShowForm}
+						handleDataPosts={setDataPosts}
+					/>
+				)}
 			</main>
-      <Footer />
+			<Footer />
 		</>
-  );
+	);
 }
 
 export default App;
